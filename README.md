@@ -1,4 +1,11 @@
+# Coding Challenge 2019
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+**Running the project**
+
+1. `yarn install`
+2. `yarn start`
 
 ## Available Scripts
 
