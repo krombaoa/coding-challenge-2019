@@ -17,10 +17,9 @@ const Logo: React.FunctionComponent<ILogoProps> = ({ logo }: ILogoProps) => {
 };
 
 const Container = styled.div`
-  z-index: 3;
   width: 100px;
   height: 17px;
-  float: left;
+  // float: left;
 `;
 
 const LogoContainer = styled.span`

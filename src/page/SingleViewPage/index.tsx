@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ViewItem from './View';
+import ViewItem from 'components/Details';
 import { useParams } from 'react-router-dom';
 
 interface IDetailsPageProps {}

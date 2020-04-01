@@ -1,37 +1,46 @@
 // @flow
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Logo from '../Logo';
 import { TNavListProps } from '../types';
-import { fetchFooterNav, fetchHeaderNav } from 'store/actions';
-import { Link } from 'react-router-dom';
+import { getConfig } from 'modules/helpers';
 
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 interface INavProps {
   logo: any;
   location: string;
 }
 
-const Nav: React.FunctionComponent<INavProps> = ({ logo, location }: INavProps) => {
-  const list = location === 'header' ? fetchHeaderNav() : fetchFooterNav();
+const NavList: React.FunctionComponent<INavProps> = ({ logo, location }: INavProps) => {
+  const list = getConfig(location);
+  const [isOpen, setIsOpen] = useState(location === 'footer');
+  const toggle = () => setIsOpen(!isOpen);
 
   return (
     <Container location={location}>
-      <Link to={'/'}>
-        <Logo logo={logo} />
-      </Link>
-      <NavList location={location}>
-        {list.map((data: TNavListProps, key: string) => {
-          const { name, link } = data;
-          return (
-            <NavItemList key={key}>
-              <NavLink>
-                <Link to={link}>{name}</Link>
-              </NavLink>
-            </NavItemList>
-          );
-        })}
-      </NavList>
+      <Navbar light expand="md">
+        <NavbarBrand href="/">
+          <Logo logo={logo} />
+        </NavbarBrand>
+        <CollapseDiv location={location}>
+          <NavbarToggler onClick={toggle} />
+        </CollapseDiv>
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-sm-auto navbar-nav" navbar>
+            {list.map((data: TNavListProps, key: string) => {
+              const { name, link } = data;
+              return (
+                <NavItem key={key}>
+                  <NavLink href={link}>
+                    <NavItemList>{name}</NavItemList>
+                  </NavLink>
+                </NavItem>
+              );
+            })}
+          </Nav>
+        </Collapse>
+      </Navbar>
     </Container>
   );
 };
@@ -42,34 +51,25 @@ const Container = styled.div<{ location: string }>`
       ? `display: block;`
       : `
     border-top: 2px solid;
-    padding-top: 26px;`}
+    `}
+
+  nav {
+    padding: 20px 0;
+  }
 `;
 
-const NavList = styled.ul<{ location: string }>`
-  z-index: 3;
-  width: 434.8px;
-  height: 14px;
-  display: inline-flex;
-  list-style: none;
-  justify-content: space-between;
-  float: right;
-  margin: ${(p) => (p.location === 'header' ? `0 0px 0 0` : `0`)};
+const CollapseDiv = styled.div<{ location: string }>`
+  display: ${(p) => (p.location === 'footer' ? 'none' : 'block')};
 `;
 
-const NavItemList = styled.li`
-  z-index: 6;
+const NavItemList = styled.span`
   height: 14px;
   font-family: Arial;
   font-size: 13px;
   font-weight: 400;
   line-height: 14px;
+  color: black;
+  padding-left: 25px;
 `;
 
-const NavLink = styled.span`
-  a {
-    text-decoration: none;
-    color: black;
-  }
-`;
-
-export default Nav;
+export default NavList;

@@ -6,7 +6,7 @@ import { getImagePath } from 'modules/helpers';
 import { Link } from 'react-router-dom';
 import Tag from 'components/Tag';
 
-interface IItemProps {
+interface ICardItemProps {
   id: number;
   title_long: string;
   tag: string;
@@ -14,10 +14,10 @@ interface IItemProps {
   slug: string;
 }
 
-const Item: React.FunctionComponent<IItemProps> = ({ id, img, slug, title_long, tag }: IItemProps) => {
+const CardItem: React.FunctionComponent<ICardItemProps> = ({ id, img, slug, title_long, tag }: ICardItemProps) => {
   return (
     <>
-      <Container>
+      <Container className="col-lg-6">
         <Tag tag={tag} />
         <Image src={getImagePath(img)} alt={slug} />
         <Description>{title_long}</Description>
@@ -33,14 +33,14 @@ const Item: React.FunctionComponent<IItemProps> = ({ id, img, slug, title_long, 
 };
 
 const Container = styled.div`
-  width: 687px;
-  height: 517px;
+  width: 100%;
   position: relative;
+  margin-bottom: 70px;
 `;
 
 const ViewLink = styled.span`
   a {
-    width: 213px;
+    width: 100%;
     display: inline-flex;
     color: #3852f7;
     text-decoration: none;
@@ -57,8 +57,6 @@ const ViewLink = styled.span`
   span {
     padding-left: 17px;
     float: right;
-    z-index: 5;
-    height: 13px;
     transform: rotate(-1.001791e-5deg);
     color: #3852f7;
     font-family: Arial;
@@ -71,9 +69,7 @@ const ViewLink = styled.span`
 `;
 
 const Description = styled.p`
-  z-index: 4;
-  width: 563px;
-  height: 64px;
+  width: 100%;
   color: #1a1a1a;
   font-family: Arial;
   font-size: 24px;
@@ -84,8 +80,7 @@ const Description = styled.p`
 `;
 
 const Image = styled.img`
-  width: 687px;
-  height: 384px;
+  width: 100%;
 `;
 
-export default Item;
+export default CardItem;

@@ -8,20 +8,20 @@ import Routes from 'routes';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Nav from './common/NavList';
+import NavHeader from './common/NavList';
 import './App.css';
 
 function App() {
   return (
     <ContextProvider>
       <Router>
-        <Container>
+        <Container className="container">
           <Content>
-            <Nav location={'header'} logo={logo} />
+            <NavHeader location={'header'} logo={logo} />
             <BodyConent>
               <Routes />
             </BodyConent>
-            <Nav location={'footer'} logo={logo} />
+            <NavHeader location={'footer'} logo={logo} />
           </Content>
         </Container>
       </Router>
@@ -30,16 +30,15 @@ function App() {
 }
 
 const Container = styled.div`
-  width: 1584px;
-  background: #f5f5f5;
+  max-width: 1400px;
   margin: auto;
 `;
 const Content = styled.div`
-  padding: 40px 90px 60px;
+  display: block;
 `;
 
 const BodyConent = styled.div`
-  padding: 60px 0;
+  padding: 20px 0px;
 `;
 
 export default App;

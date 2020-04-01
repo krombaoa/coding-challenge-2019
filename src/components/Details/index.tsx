@@ -6,24 +6,23 @@ import { getImagePath } from 'modules/helpers';
 import Tag from 'components/Tag';
 import FourOFour from 'components/404';
 
-interface IViewItemProps {
+interface IDetailsProps {
   id: any;
 }
 
-const ViewItem: React.FunctionComponent<IViewItemProps> = ({ id }: IViewItemProps) => {
+const Details: React.FunctionComponent<IDetailsProps> = ({ id }: IDetailsProps) => {
   const { state } = useContext(Context);
 
   const data = fetchDataById(state, id);
 
   return data ? (
-    <Container>
-      <ImageContainer>
+    <Container className="row">
+      <ImageContainer className="col-lg-6">
         <Tag tag={data.tag} />
         <Image src={getImagePath(data.image)} alt={data.slug} />
       </ImageContainer>
-      <QuestionContainer>
+      <QuestionContainer className="col-lg-6">
         <QuestionTitle>{data.title}</QuestionTitle>
-
         {data.questions.map((v, i) => (
           <div key={i}>
             <QuestionNumber>Question {i + 1}</QuestionNumber>
@@ -38,19 +37,20 @@ const ViewItem: React.FunctionComponent<IViewItemProps> = ({ id }: IViewItemProp
 };
 
 const Container = styled.div`
-  display: grid;
-  grid-column-gap: 30px;
-  grid-row-gap: 70px;
-  grid-template-columns: auto auto;
+  display: flex;
 `;
 const ImageContainer = styled.div`
   position: relative;
 `;
-const Image = styled.img``;
+
+const Image = styled.img`
+  width: 100%;
+`;
 
 const QuestionContainer = styled.div`
-  width: 564px;
+  width: 100%;
   margin: 0 auto;
+  padding: 60px 20px 0 10%;
 `;
 
 const QuestionTitle = styled.p`
@@ -63,7 +63,7 @@ const QuestionTitle = styled.p`
   letter-spacing: -1.8px;
 `;
 const QuestionNumber = styled.p`
-  width: 445px;
+  width: 100%;
   font-family: Arial;
   font-size: 32px;
   font-weight: 700;
@@ -80,4 +80,4 @@ const Questions = styled.p`
   line-height: 37px;
 `;
 
-export default ViewItem;
+export default Details;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import ListingView from 'components/ListingView';
-import SinglePageView from 'components/SinglePageView';
-import FourOFour from 'components/404'
+import ListingView from 'page/ListingViewPage';
+import SinglePageView from 'page/SingleViewPage';
+import FourOFour from 'components/404';
 
 interface IRouterComponentProps {}
 

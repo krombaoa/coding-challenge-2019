@@ -1,0 +1,54 @@
+{
+  "header": [
+    {
+      "name": "Culture",
+      "link": "/"
+    },
+    {
+      "name": "Work",
+      "link": "/"
+    },
+    {
+      "name": "Clients",
+      "link": "/"
+    },
+    {
+      "name": "Services",
+      "link": "/"
+    },
+    {
+      "name": "Careers",
+      "link": "/"
+    },
+    {
+      "name": "Contact",
+      "link": "/"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Privacy",
+      "link": "/"
+    },
+    {
+      "name": "Sitemap",
+      "link": "/"
+    },
+    {
+      "name": "Facebook",
+      "link": "/"
+    },
+    {
+      "name": "LinkedIn",
+      "link": "/"
+    },
+    {
+      "name": "Instagram",
+      "link": "/"
+    },
+    {
+      "name": "Twitter",
+      "link": "/"
+    }
+  ]
+}

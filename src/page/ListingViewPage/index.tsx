@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Item from './Item';
+import Item from 'components/CardItem';
 import { Context } from 'Context';
 import { ListItemLoader } from 'components/Loader';
 
@@ -19,7 +19,7 @@ const Listing: React.FunctionComponent<IListingProps> = (props) => {
   const { state } = useContext(Context);
 
   return (
-    <Container>
+    <Container className="row">
       {state.data.length !== 0 ? (
         state.data.map((data: IData, key: number) => {
           const { id, title_long, tag, thumb, slug } = data;
@@ -33,10 +33,10 @@ const Listing: React.FunctionComponent<IListingProps> = (props) => {
 };
 
 const Container = styled.div`
-  display: grid;
-  grid-column-gap: 30px;
-  grid-row-gap: 70px;
-  grid-template-columns: auto auto;
+  // display: grid;
+  // grid-column-gap: 30px;
+  // grid-row-gap: 70px;
+  // grid-template-columns: auto auto;
 `;
 
 export default Listing;
